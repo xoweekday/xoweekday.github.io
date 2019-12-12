@@ -34,24 +34,20 @@ function isArray(value) {
  */
 function isObject(value) {
     // YOUR CODE BELOW HERE //
-    if(Array.isArray(value)){
-        return false;
-    } else if(value === null){
-        return false;
-    } else if(value instanceof Date){
-        return false;
-    } 
-    return true;
-    // if(Array.isArray(value)){
-    //     return false;
-    // } else if (value === null){
-    //     return false;
-    // } else if(value instanceof Date){
-    //     return false;
-    // } else if(typeof value === 'object'){
-    //     return true;
-    // }
-    
+   if(Array.isArray(value)){
+       return false;
+   } else if(value === null){
+       return false;
+   } else if(value instanceof Date){
+       return false;
+   } else if(typeof value === "number"){
+       return false;
+   } else if(typeof value === "string"){
+       return false;
+   } else if(typeof value === "boolean"){
+       return false;
+   }
+   return true;
     
     
     // YOUR CODE ABOVE HERE //
@@ -65,13 +61,18 @@ function isObject(value) {
  */
 function isCollection(value) {
     // YOUR CODE BELOW HERE //
-    if(value === null){
-        return false;
-    } else if(value instanceof Date){
-        return false;
-    } else if(Array.isArray(value)){
-        return true;
-    }
+  if(typeof value === "boolean"){
+       return false;
+   } else if(value === null){
+       return false;
+   } else if(value instanceof Date){
+       return false;
+   } else if(typeof value === "number"){
+       return false;
+   } else if(typeof value === "string"){
+       return false;
+   } 
+   return true;
     
     // YOUR CODE ABOVE HERE //
 }
@@ -103,14 +104,16 @@ function typeOf(value) {
         return "null";
     } else if(value instanceof Date){
         return "date";
-    } else if(typeof value === undefined){
-        return "undefined";
-    } else if(typeof 1 === value){
+    } else if(isNaN(value) === "number"){
         return "number";
-    } else if(typeof true === value){
+    } else if(typeof value === "number"){
+        return "number";
+    } else if(typeof value === "boolean"){
         return "boolean";
-    } else if(typeof "a" === value){
+    } else if(typeof value === "string"){
         return "string";
+    } else if(typeof value === "function"){
+        return "function";
     }
     
     
