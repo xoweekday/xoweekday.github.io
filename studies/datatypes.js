@@ -163,3 +163,5 @@ console.log(waitNoItsMyArr); // prints => [1, "a", true, null, undefined, NaN];
     // 4c. creating and storing functions //
     
     
+    
+    

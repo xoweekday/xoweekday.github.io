@@ -120,13 +120,14 @@ function hoist(){
  
  // 3. let - re-assignment //
  mySong = "heartless";
- console.log(mySong) // prints => heartless;
+ console.log(mySong); // prints => heartless;
  
  // NOTE: We can re-assign let, however we cannot re-declare let //
  
  let myNewSong = "a lot";
  myNewSong = "gone";
  // let myNewSong = "in my room"; => this will throw a reference error 
+ console.log(myNewSong); // prints => gone
  
  // 4. let - hoisting //
  console.log(hoist());
