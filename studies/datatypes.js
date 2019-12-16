@@ -162,6 +162,10 @@ console.log(waitNoItsMyArr); // prints => [1, "a", true, null, undefined, NaN];
     
     // 4c. creating and storing functions //
     
-    
+    let divide = function(a, b){
+  return a + b;
+ };
+ 
+ console.log(divide(5,5)); // prints => 1
     
     
