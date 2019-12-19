@@ -37,10 +37,13 @@
 
 // YOUR CODE GOES BELOW HERE //
 function makeContact(id, nameFirst, nameLast) {
+    //create an object literal
+    //add each parameter in the makeContact function as a property in our object literal
  let contact = {};
  contact.id = id;
  contact.nameFirst = nameFirst;
  contact.nameLast = nameLast;
+ //return the object
  return contact;
 } 
 
@@ -49,6 +52,7 @@ function makeContactList() {
     /*
      * You need something here to hold contacts. See length api for a hint:
      */
+     //declare and assign a variable to an empty array to hold contacts
     var contacts = [];
     
     return {
@@ -57,29 +61,42 @@ function makeContactList() {
             return contacts.length;
         },
         addContact: function(contact){
+            //push the passesd in contact parameter into out contacts array
+            //return contacts
             return contacts.push(contact);
         },
         findContact: function(fullName) {
+            //loop through contacts array
             for(let i = 0; i < contacts.length; i++){
+                //use conditional statement to check if the input fullName param matches the first and last name of each contact in our contacts array
                 if(contacts[i].nameFirst + " " + contacts[i].nameLast === fullName){
+                    //return contacts
                     return contacts[i];
                 }
             }
+            //if no mateches are found return undefined
                return undefined; 
         },
         removeContact: function(contact){
+            //loop through contacts array
             for(let i = 0; i < contacts.length; i++){
+                //use conditional statement to check if the input contact object matches the objects in our contacts array
                 if(contacts[i] === contact){
+                    //if the conditional evaluates to true, use splice to remove that contact object from our contacts array
                     contacts.splice(i, 1);
                 }
             }
         },
         printAllContactNames: function(){
+            //declare and assign a variable to an empty array
             let strings = [];
+            //loop through contacts array
                 for(let i = 0; i < contacts.length; i++){
+                    //push the whole name of each object into our strings array
+                    //make sure to add a white space while pushing
                   strings.push(contacts[i].nameFirst + " " + contacts[i].nameLast);
                 }
-            
+            //return the strings array using the .join method to seperate each name with a new line character
             return strings.join("\n");
             }
     };

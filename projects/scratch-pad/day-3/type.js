@@ -14,6 +14,7 @@
  */
 function isArray(value) {
     // YOUR CODE BELOW HERE //
+    //use conditional statement to test if input value is an array
     if(Array.isArray(value)){
         return true;
     }
@@ -34,6 +35,8 @@ function isArray(value) {
  */
 function isObject(value) {
     // YOUR CODE BELOW HERE //
+    //use conditional statement to check if the input value is an object is intended as a collection
+    //make sure to check all other JavaScript objects before checking for object intended as a collection
    if(Array.isArray(value)){
        return false;
    } else if(value === null){
@@ -61,6 +64,9 @@ function isObject(value) {
  */
 function isCollection(value) {
     // YOUR CODE BELOW HERE //
+    //use conditional to check if input value is intended as a collection (array/object)
+    //make sure to check all other JavaScript objects before checking for collection
+    
   if(typeof value === "boolean"){
        return false;
    } else if(value === null){
@@ -98,6 +104,8 @@ function isCollection(value) {
  */ 
 function typeOf(value) {
     // YOUR CODE BELOW HERE //
+    //use conditional statement to check if the input value is a certain typeof datatype
+    //be careful to appropriately check for different datatype
     if(Array.isArray(value)){
         return "array";
     } else if(value === null){

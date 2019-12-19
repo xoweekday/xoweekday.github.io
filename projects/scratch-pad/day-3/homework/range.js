@@ -23,7 +23,9 @@
  */
 function range(start, end) {
     // YOUR CODE GOES BELOW HERE //
+    //declare and assign a variable to an empty array to hold results
     let results = [];
+    //use conditional statement to check starting condition for the for loop
     if(start > end){
         for(let i = start; i >= end; i--){
             results.push(i);
@@ -33,6 +35,7 @@ function range(start, end) {
             results.push(i);
         }
     }
+    //return the results array
     return results;
     
     // YOUR CODE GOES ABOVE HERE //

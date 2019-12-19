@@ -13,6 +13,7 @@
  */
 function createGreaterThanFilter(base) {
     // YOUR CODE BELOW HERE //
+    //return function testing if the input value is greater than the input base
  return value => value > base;
     
     
@@ -26,6 +27,7 @@ function createGreaterThanFilter(base) {
  */
 function createLessThanFilter(base) {
     // YOUR CODE BELOW HERE //
+    //return function testing if the input value is less than the input base
     return value => value < base;
     
     
@@ -40,7 +42,7 @@ function createLessThanFilter(base) {
  */
 function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
-    
+    //return a function testing if an input string startswith an input character
     return string => string[0].toUpperCase() === startsWith.toUpperCase();
     
     
@@ -54,7 +56,7 @@ function createStartsWithFilter(startsWith) {
  */
 function createEndsWithFilter(endsWith) {
     // YOUR CODE BELOW HERE //
-    
+    //return a function testing if an input string endswith an input character
 return string => string[string.length - 1].toUpperCase() === endsWith.toUpperCase();
     
     
@@ -70,11 +72,14 @@ return string => string[string.length - 1].toUpperCase() === endsWith.toUpperCas
  */
 function modifyStrings(strings, modify) {
     // YOUR CODE BELOW HERE //
+    //declare and assign a variable to an empty array
     let results = [];
+    //loop through input string
     for(let i = 0; i < strings.length; i++){
+        //push the modify method at each index to results array
         results.push(modify(strings[i]));
     }
-    
+    //return results
     return results;
     
     // YOUR CODE ABOVE HERE //
@@ -91,8 +96,9 @@ function modifyStrings(strings, modify) {
  */
 function allStringsPass(strings, test) {
     // YOUR CODE BELOW HERE //
-    
+    //loop through strings to access each index
     for(let i = 0; i < strings.length; i++){
+        //use conditional to compare the passed in test function on each element
         if(test(strings[i]) === false){
             return false;
         }
