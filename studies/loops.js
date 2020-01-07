@@ -33,6 +33,7 @@
  
  // 1b. for loop backwards // 
  
+ let numsArrayReversed = [];
  for(let i = 10; i >= 0; i--){
      numsArrayReversed.push(i);
  }
@@ -53,7 +54,7 @@
  */
  
  
- let numsArrayReversed = [];
+
  let myObj = {favFruit: "strawberry", favNum: 5, favSong: "Solo", favLang: "JS"};
  
  for(let key in myObj){
