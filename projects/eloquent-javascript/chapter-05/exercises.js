@@ -2,7 +2,11 @@
 // flatten /////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function flatten() {
+function flatten(array) {
+//use reduce on input array param 
+//at each iteration concat the seed (any empty array), with each element (array)
+//return the entire reduce function
+return array.reduce((seed, element) => seed.concat(element), []);
 
 }
 

@@ -45,7 +45,6 @@ function createStartsWithFilter(startsWith) {
     //return a function testing if an input string startswith an input character
     return string => string[0].toUpperCase() === startsWith.toUpperCase();
     
-    
     // YOUR CODE ABOVE HERE //
 }
 
@@ -104,7 +103,6 @@ function allStringsPass(strings, test) {
         }
     }
     return true;
-    
     // YOUR CODE ABOVE HERE //
 }
 
