@@ -67,7 +67,7 @@ function countBs(string) {
 // //return count
 // return count;
 
-//use countChars function to check for the number of capital Bs
+//return the countChars function to check for the number of capital Bs
 return countChars(string, "B");
 }
 

@@ -185,8 +185,10 @@ var modulo = function(x, y) {
 // 12. Write a function that multiplies two numbers without using the * operator  or
 // JavaScript's Math object.
 var multiply = function(x, y) {
+  //base case
   if(x === 0 || y === 0){
     return 0;
+    //recursive case
   } if(y < 0){
     return -x + multiply(x, y + 1);
   } else{

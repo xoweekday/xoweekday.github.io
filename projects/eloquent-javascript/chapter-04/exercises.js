@@ -90,10 +90,11 @@ return array;
 function arrayToList(array) {
 //use the .reduce method to iterate over the passes in array param
 return array.reverse().reduce((seedObj, nums, index) => {
-  //at each iteration return an array with a value property and a rest property
+  //at each iteration return an object with a value property and a rest property
   //value is assigned to the nums param in our reduce function 
   //rest is assigned to the seedObj param 
   //important to return that object so at each iteration the seedObj is updated
+  //seedObj is given a value of null becuase that's the value we want our inner most object to be
  return {
    value: nums,
    rest: seedObj
@@ -106,10 +107,16 @@ return array.reverse().reduce((seedObj, nums, index) => {
 ////////////////////////////////////////////////////////////////////////////////
 
 function listToArray(list) {
+  //declare and assign a variable to an empty array
 let arr = [];
+//assign and declare the starting conditional to the list param
+//assign stopping condition the list param / which means the loop will keep iterating until it gets to the inner most object of the list
+//the for loop will iterate by each objects rest property
 for(let node = list; node; node = node.rest){
+  //at each iteration push the value of that object's value property into the array that we created
   arr.push(node.value);
 }
+//return updated arr
 return arr;
 }
 
@@ -118,8 +125,11 @@ return arr;
 ////////////////////////////////////////////////////////////////////////////////
 
 function prepend(element, list) {
+  //assign and declare a variable to the function call of listToArray to change our list into an array filled the each object's value property
   let updateList = listToArray(list);
+  //use the unshift method to push the input element into the updateList variable that we created 
 updateList.unshift(element);
+//return the function call of arrayToList on current updateList array to change our array with our element param inside back into a list
 return arrayToList(updateList);
 }
 
@@ -150,29 +160,40 @@ return nth(list.rest, number - 1);
 // deepEqual ///////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function deepEqual(value1, value2) {
-if(value1 === value2){
+function deepEqual(obj1, obj2) {
+  //set up conditional to check if obj1 is strictly equal to obj2
+  //if conditional passes return true
+if(obj1 === obj2){
   return true;
 } 
-
-if(value1 === null || typeof value1 !== "object" || value2 === null || typeof value2 !== "object"){
+//set up conditional to check if obj1 or obj2 is either null or not an object
+//if conditional passes return false
+if(obj1 === null || typeof obj1 !== "object" || obj2 === null || typeof obj2 !== "object"){
   return false;
 }
 
-let propsInValue1 = 0;
-let propsInValue2 = 0;
+//declare and assign variables to hold the amount of properties in each of the passes in object parameters 
+let propsInObj1 = 0;
+let propsInObj2 = 0;
 
-for(let prop in value1){
-  propsInValue1 += 1;
+//iterate over the obj1 param using a for-in loop
+for(let prop in obj1){
+  //at each iteration, add one to propsInObj1 for each property found during the loop
+  propsInObj1 += 1;
 }
 
-for(let prop in value2){
-  propsInValue2 += 1;
-  if(!(prop in value1) || !deepEqual(value1[prop], value2[prop])){
+//iterate over obj2 param using a for-in loop
+for(let prop in obj2){
+  //at each iteration, add one to propsInObj2 for each property found during the loop
+  propsInObj2 += 1;
+  //set up conditional to check if the properties in obj1 and obj2 are equal by calling the deepEqual function
+  if(!(prop in obj1) || !deepEqual(obj1[prop], obj2[prop])){
     return false;
   }
 }
-return propsInValue1 === propsInValue2;
+
+//return the boolean value of strictly comparing propsInObj1 and propsInObj2
+return propsInObj1 === propsInObj2;
 
 }
 
