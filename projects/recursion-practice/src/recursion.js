@@ -6,16 +6,19 @@
 // factorial(5);  // 120
 var factorial = function(n) {
   //set edge case for negative numbers
+  //if n if less that zero return null
   if(n < 0){
     return null;
   }
   
   //base case
+  //if n is equal to zero return 1
   if(n === 0){
     return 1;
   }
   
   //recursive case
+  //return n * the function call of factorial(n - 1)
   return n * factorial(n - 1);
 };
 
@@ -23,11 +26,13 @@ var factorial = function(n) {
 // Example:  sum([1, 2, 3, 4, 5, 6]);  // 21
 var sum = function(array) {
   //base case
+  //if there is no array length return 0
   if(!array.length){
     return 0;
   }
   
   //recursive case
+  //return the first element in the array param + the function call sum slicing one element on each call
   return array[0] + sum(array.slice(1));
 };
 
@@ -39,19 +44,23 @@ var arraySum = function(array) {
 // 4. Check if a number is even.
 var isEven = function(n) {
   //base case
+  //if n is equal to 1 return false
   if(n === 1){
     return false;
   }
   //edge case
+  //if n is equal to 0 return true
   if(n === 0){
     return true;
   }
   //edge case
+  //if n is less than zero return the function call passing in negative n to make n postive 
   if(n < 0){
     return isEven(-n);
   }
   
   //recursive case
+  //return the isEven function subtracting 2 from the passed in n param
   return isEven(n - 2);
 };
 
@@ -60,16 +69,21 @@ var isEven = function(n) {
 // sumBelow(7); // 21
 var sumBelow = function(n) {
   //base case 
+  //if n is equal to zero return 0
   if(n === 0){
     return 0;
   }
   
   //edge case
+  //if n is less than zero return (param + 1) + sumBelow(n + 1)
+  //this is to check for negative numbers
   if(n < 0){
     return (n + 1) + sumBelow(n + 1);
   }
   
   //recursive case
+  //return (n - 1) + sumBelow(n - 1)
+  //this is how we recursively get to our base case 
   return (n - 1) + sumBelow(n - 1);
 };
 
@@ -101,20 +115,25 @@ var range = function(x, y) {
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
   //base case
+  //if exp is equal to 0 return 1
   if(exp === 0){
     return 1;
   }
   //base case
+  //if exp is equal to 1 return base
   if(exp === 1){
     return base;
   }
   
   //edge case
+  //if exp is less than zero return 1 divided by the function call of exponenet(base, -exp)
+  //this is to check for negative exponents
   if(exp < 0){
     return 1 / exponent(base, -exp);
   }
   
   //recursive case
+  //return base times the function call of exponent passing in the base and exp - 1;
   return base * exponent(base, exp - 1);
 };
 
@@ -124,25 +143,31 @@ var exponent = function(base, exp) {
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
   //base case
+  //if n is equal to 1 return true
   if(n === 1){
     return true;
   }
   //edge case
+  //if n is equal to 0 return false 
   if(n === 0){
     return false;
   }
   //edge case
+  //if n % 2 === 1 return false
+  //this is because any number with the remaninder of 1 while being divided by 2 is odd
   if(n % 2 === 1){
     return false;
   }
   
   //recursive case
+  //return function call of powerOfTwo passing in n divided by 2
   return powerOfTwo(n / 2);
 };
 
 // 9. Write a function that accepts a string a reverses it.
 var reverse = function(string) {
   //base case
+  //if string is equal to an equal string return an empty string
   if(string === ""){
     return "";
   }
