@@ -90,20 +90,31 @@ var sumBelow = function(n) {
 // 6. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
 var range = function(x, y) {
+  //assign and declare a variable to an empty array
   let arr = [];
+  //if x === y return arr
   if(x === y){
     return arr;
+    //if x === y - 1 return arr
   }else if(x === y - 1){
     return arr;
+    //if x === y + 1 return arr
   } else if(x === y + 1){
   return arr;
+  //check if x is greater than y
  }else if(x > y){
+   //if conditional passes assign a variable to decrement by one
   let inc2 = --x;
+  //push x into arr
   arr.push(x);
+  //return the arr concated with the range function call passing in inc2 and y
  return arr.concat(range(inc2, y));
 }
+//if no other conditional passes assign a variable to increment by one
   let inc = ++x;
+  //push x into arr
   arr.push(x);
+  //return the arr param concated with the range function call passing in inc and y 
   return arr.concat(range(inc, y));
   
 };
@@ -173,6 +184,9 @@ var reverse = function(string) {
   }
   
   //recursive case 
+  //return the function call of reverse passing in string.slice(1) + string[0]
+  //this will (at each function call) take off one element from the string
+  //once the base case is hit, (while coming out of the call stack) each element will now be added to the empty string from our call stack
   return reverse(string.slice(1)) + string[0];
 };
 
@@ -180,14 +194,19 @@ var reverse = function(string) {
 var palindrome = function(string) {
   //must remove extra spaces before checking chars
   string = string.trim();
-  //base 
+  //base case
+  //since a palindrome is a word thats the same forward or reversed a good base case will be if string.length is 1 or 0
+  //this is because if the string has a even or odd number of letters the middle will have either one word or no words
+  //if this conditional is true, return true
   if(string.length === 1 || string.length === 0){
     return true;
   }
-  //recusrive case,
+  //recusrive case
+  //if the first and last index of the string are the same return the function call of palindrome passing in the string param slicing the first and last indices
   if(string[0].toUpperCase() === string[string.length - 1].toUpperCase()){
     return palindrome(string.slice(1, string.length - 1));
   } else {
+    //if conditional does not pass return false
     return false;
   }
   
@@ -211,12 +230,15 @@ var modulo = function(x, y) {
 // JavaScript's Math object.
 var multiply = function(x, y) {
   //base case
+  //if x or y are equal to zero return 0
   if(x === 0 || y === 0){
     return 0;
     //recursive case
+    //if y is less than zero return -x + the function call of multiply passing in x and y + 1
   } if(y < 0){
     return -x + multiply(x, y + 1);
   } else{
+    //if conditional does not pass return x + the function call of multiply passing in x and y - 1
     return x + multiply(x, y - 1);
   }
     
@@ -242,15 +264,18 @@ var gcd = function(x, y) {
 // compareStr('tomato', 'tomato') // true
 var compareStr = function(str1, str2) {
   //base case
+  //if str1.length and str2.length are equal to zero return true
   if(str1.length === 0 && str2.length === 0){
     return true;
   }
   
   //edge case
+  //if the first elements in str1 and str2 are not equal return false
   if(str1[0] !== str2[0]){
     return false;
   }
   //recursive case
+  //return the compareStr function call passing in str1.slice(1) and str2.slice(1)
   return compareStr(str1.slice(1), str2.slice(1)); 
 };
 
@@ -258,11 +283,13 @@ var compareStr = function(str1, str2) {
 // occupies an index of the array.
 var createArray = function(str){
   //base case
+  //if str.length is zero return an empty array
   if(!str.length){
     return [];
   }
   
   //recursive case
+  //return str[0] inside an array literal and concat that with the createArray function call passing in str.slice(1)
   return [str[0]].concat(createArray(str.slice(1)));
 };
 
@@ -270,10 +297,12 @@ var createArray = function(str){
 var reverseArr = function (array) {
   //console.log(array.slice(-1));
   //base case
+  //if array.length is equal to zero return an empty array
   if(array.length === 0){
     return [];
   }
   //recursive case
+  //return an empty array and concat that with the function call of reverseArr passing in array.slice(1) and the first element of the array param
   return [].concat(reverseArr(array.slice(1)), array[0]);
   
 };
@@ -283,11 +312,13 @@ var reverseArr = function (array) {
 // buildList(7,3) // [7,7,7]
 var buildList = function(value, length) {
   //base case
+  //if length param is zero return an empty array
   if(!length){
     return [];
   }
   
   //recursive case
+  //return value param inside of an array literal and concat that with the buildList function call passing in value param and length param - 1
   return  [value].concat(buildList(value, length - 1));
 };
 
@@ -296,13 +327,17 @@ var buildList = function(value, length) {
 // countOccurrence([2,'banana',4,4,1,'banana'], 'banana') // 2
 var countOccurrence = function(array, value) {
   //base case
+  //if array.length is 0 return 0
   if(!array.length){
     return 0;
   } 
   
   //base case
+  //declare and assign a variable to count the occurrences of each element
+  //use ternary operator to check if array[0] is equal to value, if true return 1, else return 0
   let count = (array[0] === value) ? 1 : 0;
   //revursive case
+  //return count + the countOccurrence function call passing in array param slicing off one element and the value param
   return count + countOccurrence(array.slice(1), value);
 };
 
@@ -310,10 +345,12 @@ var countOccurrence = function(array, value) {
 // rMap([1,2,3], timesTwo); // [2,4,6]
 var rMap = function(array, callback) {
   //base case
+  //if array.length is equal to zero return an empty array
   if(!array.length){
     return [];
   } 
   //recursive case
+  //return the callback param function passing in array[0] inside of an array literal and concat that with the rMap function call passing in array.slice(1) and the callback param
   return [callback(array[0])].concat(rMap(array.slice(1), callback));
 };
 
@@ -351,19 +388,23 @@ var fibonacci = function(n) {
 // nthFibo(3); // 2
 var nthFibo = function(n) {
   //base case
+  //if n is equal to 0 return 0
   if(n === 0){
     return 0;
   }
   //base case
+  //if n is equal to 1 return 1
   if(n === 1){
     return 1;
   }
   //edge case
+  //if n is less than 0 return null
   if(n < 0){
     return null;
   }
   
   //recursive case
+  //return the function call of nthFibo passing in n - 1 + the function call of nthFibo passing is n - 2
   return nthFibo(n - 1) + nthFibo(n - 2);
 };
 
@@ -372,11 +413,13 @@ var nthFibo = function(n) {
 // capitalizedWords(words); // ['I', 'AM', 'LEARNING', 'RECURSION']
 var capitalizeWords = function(input) {
   //base case
+  //if input.length equals 0 return an empty array
   if(!input.length){
     return [];
   }
   
   //recursive case
+  //return input[0].toUpperCase() inside of an array literal and concat that with capitalizeWords function call passing in input.slice(1)
   return [input[0].toUpperCase()].concat(capitalizeWords(input.slice(1)));
 };
 
@@ -384,11 +427,13 @@ var capitalizeWords = function(input) {
 // capitalizeFirst(['car', 'poop', 'banana']); // ['Car', 'Poop', 'Banana']
 var capitalizeFirst = function(array) {
   //base case
+  //if array.length equals zero return an empty array
   if(!array.length){
     return [];
   }
   
   //recursive case
+  //return array[0][0].toUpperCae() + array[0].slice(1) inside of an array literal and concat that with the capitalizeFirst function call passing in array.slice(1)
   return [array[0][0].toUpperCase() + array[0].slice(1)].concat(capitalizeFirst(array.slice(1)));
 };
 
@@ -413,14 +458,19 @@ var flatten = function(arrays) {
 // letterTally('potato'); // {'p':1, 'o':2, 't':2, 'a':1}
 var letterTally = function(str, obj = {}) {
   //base case
+  //if str.length equals zero return the obj param
   if(!str.length){
     return obj;
   }
   
   //base case
+  //use ternary operator to check if obj param has the str[0] letter as a key
+  //if it doesnt have it add that key and assign it a value of 1
+  //if it does add one to the value of that key
   (!obj[str[0]]) ? obj[str[0]] = 1 : obj[str[0]] += 1;
   
   //recursive case
+  //return the letterTally function call passing in the str.slice(1) and the obj param
   return letterTally(str.slice(1), obj);
   
  // return Object.assign({}, )
@@ -433,15 +483,18 @@ var letterTally = function(str, obj = {}) {
 // Example: compress([1, 2, 2, 3, 4, 4, 2, 5, 5, 5, 4, 4]) // [1, 2, 3, 4, 2, 5, 4]
 var compress = function(list) {
   //base case
+  //if list.length is equal to zero return []
   if(!list.length){
     return [];
   }
   
   //edge case
+  //if list[0] is equal to list[1] return the compress function call passing in list.slice(1)
   if(list[0] === list[1]){
     return compress(list.slice(1));
   }
   //recursive case
+  //return list[0] inside of an array literal and concat that with the compress function call passing in list.slice(1)
   return [list[0]].concat(compress(list.slice(1)));
   
   //recursive case
@@ -459,14 +512,17 @@ var augmentElements = function(array, aug) {
 // minimizeZeroes([2,0,0,0,1,0,0,4]) // [2,0,1,0,4]
 var minimizeZeroes = function(array) {
   //base case
+  //if array.length equals zero return an empty array
   if(!array.length){
     return [];
   }
   //base case
+  //if array[0] and array[1] are both equal to zero return the minimizeZeros function call passing in array.slice(1)
   if(array[0] === 0 && array[1] === 0){
     return minimizeZeroes(array.slice(1));
   }
   //recursive case
+  //return array[0] inside of an array literal and concat that array with the minimizeZeroes function call passing in array.slice(1)
   return [array[0]].concat(minimizeZeroes(array.slice(1)));
 };
 
@@ -476,20 +532,26 @@ var minimizeZeroes = function(array) {
 // alternateSign([-2,-7,8,3,-1,4]) // [2,-7,8,-3,1,-4]
 var alternateSign = function(array) {
   //base case
+  //if array.length is zero return []
   if(!array.length){
     return [];
   }
   
   //base case
+  //since we want the first index to be positive check and see if array[0] is less than zero
   if(array[0] < 0){
+    //if true re-assgin array[0] to -array[0] to make it postive
     array[0] = -array[0];
   } 
   //base case
+  //since we want to alternate signs, array[1] must be negative, check if array[1] is greater than zero
   if(array[1] > 0){
+    //if true reassign array[1] to -array[1] to make it negative
     array[1] = -array[1];
   }
   
   //recursive case
+  //return array[0] and array[1] inside of an array literal and concat that array with the alternateSign function call passing in array.slice(2)
   return [array[0], array[1]].concat(alternateSign(array.slice(2)));
 };
 
@@ -499,6 +561,7 @@ var alternateSign = function(array) {
 var numToText = function(str) {
   let result = "";
   //base case
+  //if str.length is zero return an emtpy string
   if(!str.length){
     return "";
   }
@@ -518,12 +581,16 @@ var numToText = function(str) {
   
 
   //base case
+  //check if numsObj has the key of str[0]
   if(numsObj[str[0]]){
+    //if conditional passes assign result to the the value of numsObj[str[0]]
     result = result + numsObj[str[0]];
   } else {
+    //else return result + str[0]
     result = result + str[0];
   }
   //recursive case
+  //return result + the numToText function call passing in str.slice(1)
 return result + numToText(str.slice(1));
 };
 // *** EXTRA CREDIT ***
